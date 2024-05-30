@@ -3,12 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SAS
+  - Outdoor
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - SAS
   - Water
   - UI
   - 
