@@ -6,6 +6,10 @@ TagManager:
   tags:
   - SAS
   - Outdoor
+  - Set
+  - NotSet
+  - OpenDoor
+  - CloseDoor
   layers:
   - Default
   - TransparentFX

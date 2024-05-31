@@ -9,15 +9,9 @@ public class ButtonsDoor : MonoBehaviour
 {
     [SerializeField] private GameObject door;
     private Animator doorAnimator;
-
-    private PlayerInput playerInput;
-    private InputAction clickAction;
     
     void Awake() {
         doorAnimator = door.transform.GetComponent<Animator>();
-
-        playerInput = GetComponent<PlayerInput>();
-        clickAction = playerInput.actions["Click"];
     }
 
     void Start() {
@@ -25,14 +19,30 @@ public class ButtonsDoor : MonoBehaviour
     }
 
     void Update() {
-        OnClickAction();
     }
 
     void OnClickAction() {
-        if(clickAction.ReadValue<bool>() != false) {
-            Debug.Log("clicked");
+        if(transform.tag == "OpenDoor") {
             doorAnimator.SetBool("isOpen", true);
+
+            Debug.Log("open");
         }
+
+        if(transform.tag == "CloseDoor") {
+            doorAnimator.SetBool("isOpen", false);
+
+            Debug.Log("closed");
+        }
+    }
+
+    public void EnableButtons() {
+        OnClickAction();
+
+        Debug.Log("Buttons ON");
+    }
+
+    public void DisableButtons() {
+        Debug.Log("Buttons OFF");
     }
 
 }

@@ -9,14 +9,19 @@ public class InteractableDoors : MonoBehaviour
     private bool canGoInside = true;
     private GameObject sasDoor;
     private GameObject outsideDoor;
-    private Vector3 sasDoorClosedPosition;
+    private float doorClosedPosition = -0.024f;
     private Vector3 outsideDoorClosedPosition;
 
     void Awake() {
         sasDoor = GameObject.FindWithTag("SAS");
-        sasDoorClosedPosition = sasDoor.transform.position;
         outsideDoor = GameObject.FindWithTag("Outdoor");
-        outsideDoorClosedPosition = outsideDoor.transform.position;
+
+        // Reset doors position
+        sasDoor.transform.position = new Vector3(doorClosedPosition, sasDoor.transform.position.y, sasDoor.transform.position.z);
+        outsideDoor.transform.position = new Vector3(doorClosedPosition, outsideDoor.transform.position.y, outsideDoor.transform.position.z);
+
+        Debug.Log(sasDoor.transform.position);
+        Debug.Log(outsideDoor.transform.position);
     }
 
     void Start() {
@@ -29,25 +34,27 @@ public class InteractableDoors : MonoBehaviour
 
     // Allow to open the outside door only if sas door is closed
     private void CanOpenOutdoorDoor() {
-        if(sasDoor.transform.position == sasDoorClosedPosition) {
-            Debug.Log("You can go outside");
+        if(sasDoor.transform.position.x == doorClosedPosition) {
+            //Debug.Log("You can go outside");
             canGoOutside = true;
-            outsideDoor.Find("AttachPoint").SetActive(true);
+            Transform attach = outsideDoor.transform.Find("AttachPoint");
+            attach.gameObject.SetActive(true);
+
 
         } else {
-            Debug.Log("You CAN'T go outside");
+            //Debug.Log("You CAN'T go outside");
             canGoOutside = false;
         }
     }
 
     // Allow to open the sas door only if outside door is closed
     private void CanOpenSasDoor() {
-        if(outsideDoor.transform.position == outsideDoorClosedPosition) {
-            Debug.Log("You can go inside");
+        if(outsideDoor.transform.position.x == doorClosedPosition) {
+            //Debug.Log("You can go inside");
             canGoInside = true;
 
         } else {
-            Debug.Log("You CAN'T go inside");
+            //Debug.Log("You CAN'T go inside");
             canGoInside = false;
         }
     }
