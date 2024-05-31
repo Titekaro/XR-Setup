@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 
 public class GeneratorManager : MonoBehaviour
@@ -15,10 +17,12 @@ public class GeneratorManager : MonoBehaviour
     [SerializeField] private GameObject socketBattery;
     [SerializeField] private ButtonsDoor buttonsDoor;
 
+    private GameObject doorManager;
+
     void Awake() {
         alertAudio = GameObject.Find("Rooms").GetComponent<AudioSource>();
         generatorAudio = GameObject.Find("Generator").GetComponent<AudioSource>();
-        buttonsDoor = GameObject.Find("Buttons Panel").GetComponent<ButtonsDoor>();
+        doorManager = GameObject.Find("Door Manager");
     }
 
     void Start() {
@@ -47,13 +51,23 @@ public class GeneratorManager : MonoBehaviour
         if(isBatterySet && isCardSet) {
             isGeneratorRunning = true;
 
+            if (!generatorAudio.isPlaying) generatorAudio.Play();
+            
+
             //Enable buttons Door
-            buttonsDoor.EnableButtons();
+            for (int i = 0; i < doorManager.transform.childCount; i++){
+                GameObject child = doorManager.transform.GetChild(i).gameObject;
+                child.GetComponent<ButtonsDoor>().EnableButtons();
+            }
+
         } else {
             isGeneratorRunning = false;
 
             //Disable buttons Door
-            buttonsDoor.DisableButtons();
+            for (int i = 0; i < doorManager.transform.childCount; i++){
+                GameObject child = doorManager.transform.GetChild(i).gameObject;
+                child.GetComponent<ButtonsDoor>().DisableButtons();
+            }
         }
 
         Debug.Log(isGeneratorRunning);

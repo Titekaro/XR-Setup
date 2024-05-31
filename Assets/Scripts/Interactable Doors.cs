@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class InteractableDoors : MonoBehaviour
 {
-    private bool canGoOutside = true;
-    private bool canGoInside = true;
+    internal bool canGoOutside = true;
+    internal bool canGoInside = true;
+
     private GameObject sasDoor;
     private GameObject outsideDoor;
     private float doorClosedPosition = -0.024f;
-    private Vector3 outsideDoorClosedPosition;
 
     void Awake() {
         sasDoor = GameObject.FindWithTag("SAS");
@@ -39,11 +39,11 @@ public class InteractableDoors : MonoBehaviour
             canGoOutside = true;
             Transform attach = outsideDoor.transform.Find("AttachPoint");
             attach.gameObject.SetActive(true);
-
-
         } else {
             //Debug.Log("You CAN'T go outside");
             canGoOutside = false;
+            Transform attach = outsideDoor.transform.Find("AttachPoint");
+            attach.gameObject.SetActive(false);
         }
     }
 
@@ -52,10 +52,14 @@ public class InteractableDoors : MonoBehaviour
         if(outsideDoor.transform.position.x == doorClosedPosition) {
             //Debug.Log("You can go inside");
             canGoInside = true;
+            Transform attach = sasDoor.transform.Find("AttachPoint");
+            attach.gameObject.SetActive(true);
 
         } else {
             //Debug.Log("You CAN'T go inside");
             canGoInside = false;
+            Transform attach = sasDoor.transform.Find("AttachPoint");
+            attach.gameObject.SetActive(false);
         }
     }
     

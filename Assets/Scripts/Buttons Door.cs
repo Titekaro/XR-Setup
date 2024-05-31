@@ -9,13 +9,16 @@ public class ButtonsDoor : MonoBehaviour
 {
     [SerializeField] private GameObject door;
     private Animator doorAnimator;
+    private Button buttonOpen;
+    private Button buttonClose;
     
     void Awake() {
         doorAnimator = door.transform.GetComponent<Animator>();
+        buttonOpen = transform.Find("Button Open").GetComponent<Button>();
+        buttonClose = transform.Find("Button Close").GetComponent<Button>();
     }
 
-    void Start() {
-        
+    void Start() {   
     }
 
     void Update() {
@@ -36,12 +39,18 @@ public class ButtonsDoor : MonoBehaviour
     }
 
     public void EnableButtons() {
+        buttonOpen.interactable = true;
+        buttonClose.interactable = true;
+
         OnClickAction();
 
         Debug.Log("Buttons ON");
     }
 
     public void DisableButtons() {
+        buttonOpen.interactable = false;
+        buttonClose.interactable = false;
+
         Debug.Log("Buttons OFF");
     }
 
