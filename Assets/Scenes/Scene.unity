@@ -11566,8 +11566,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd508b5cf240ea846811737b71177828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canGoOutside: 1
-  canGoInside: 1
 --- !u!1 &1632727672
 GameObject:
   m_ObjectHideFlags: 0
@@ -16382,12 +16380,12 @@ PrefabInstance:
     - target: {fileID: 4122878040896856933, guid: f69f637cab401cd489e0a9f50cea3165,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5103502831166831619, guid: f69f637cab401cd489e0a9f50cea3165,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5123229713820768774, guid: f69f637cab401cd489e0a9f50cea3165,
         type: 3}
@@ -16417,7 +16415,7 @@ PrefabInstance:
     - target: {fileID: 5806985851058945694, guid: f69f637cab401cd489e0a9f50cea3165,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6504241186139723207, guid: f69f637cab401cd489e0a9f50cea3165,
         type: 3}
@@ -16427,12 +16425,12 @@ PrefabInstance:
     - target: {fileID: 6504241186139723207, guid: f69f637cab401cd489e0a9f50cea3165,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6533069485742092017, guid: f69f637cab401cd489e0a9f50cea3165,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7657183445830540740, guid: f69f637cab401cd489e0a9f50cea3165,
         type: 3}
